@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/*@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');*/
+
+:root {
+  --black: black;
+  --white: white;
+  --highlighted-item: #ff0;
+  --aspect-ratio: 9/16;
+  --font-nes: "Press Start 2P", system-ui;
+}
+
+/* Definición de la animación blink */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+html {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--black);
+  color: var(--white);
+  /*Para que los píxeles se vean nítidos*/
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: never;
+  text-rendering: optimizespeed;
+  /*-------*/
+}
+
+.white-text {
+  color: var(--white);
+  font-size: clamp(1rem, 3vmin, 2rem);
+}
+
+.highlighted {
+  color: var(--highlighted-item);
+  }
+
+.blinking {
+  animation: blink 1s infinite;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.viewport {
+  position: absolute;
+  aspect-ratio: var(--aspect-ratio);
+  /* Cálculos para mantener el aspect ratio en cualquier pantalla */
+  width: min(100vw, calc(100vh * var(--aspect-ratio)));
+  height: min(100vh, calc(100vw / var(--aspect-ratio)));
+  background: #111;
+  overflow: hidden;
+  /*Para que el arte (imágenes/sprites) se vea nítido*/
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: (var(--black));
+  z-index: 10;
+}
+
+/*añadir/quitar esta clase con JS para que las secciones se vean (ya que .screen tiene display: none)*/
+.screen.active {
+  display: flex;
+}
+
+.hud {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 20;
+}
+
+button:hover {
+  cursor: pointer;
+  color: #ccc;
+}
+button:active {
+  transform: scale(0.95);
+}
+
+.menu ul {
+  list-style: none; /* Quita los puntos negros */
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* Espaciado entre opciones */
+}
+
+.menu-item {
+  background: none;
+  border: none;
+  padding: 10px;
+  font-family: var(--font-nes);
+  font-size: 2vmin;
+  line-height: 1.5;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+  transition: color 0.1s;
+}
+
+/* Efecto de selección*/
+.menu-item:hover {
+  color: var(--highlighted-item);
+}
