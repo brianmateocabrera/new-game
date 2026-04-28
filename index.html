@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Juego</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<!-- EL BODY ACTUA COMO CONTENEDOR CON PROPORCIÓN-->
+
+<body class="viewport">
+
+  <header class="game-ui" data-state="menu">
+    <!-- PANTALLA INICIAL (MENÚ) -->
+    <section class="screen menu-screen">
+      <h1 class="logo">MI JUEGO</h1>
+      <!-- MENÚ INICIAL Y SUBMENÚES -->
+      <nav class="menu">
+        <ul id="main-menu">
+          <li><button class="menu-item" id="btn-play">JUGAR</button></li>
+        </ul>
+
+        <ul id="modes-menu" class="hidden">
+          <li><button class="menu-item white-text blinking" id="btn-1p">1P vs CPU</button></li>
+          <li><button class="menu-item white-text" id="btn-pvp">PvP ONLINE</button></li>
+          <li><button class="menu-item white-text" id="btn-learn">TUTORIAL</button></li>
+        </ul>
+
+        <ul id="1player-menu" class="hidden">
+          <li><button class="menu-item white-text">EXHIBICIÓN</button></li>
+          <li><button class="menu-item white-text">TORNEO</button></li>
+          <li><button class="menu-item white-text btn-back">ATRÁS</button></li>
+        </ul>
+
+        <ul id="online-menu" class="hidden">
+          <li><button class="menu-item white-text">CREAR PARTIDA</button></li>
+          <li><button class="menu-item white-text">UNIRSE</button></li>
+          <li><button class="menu-item white-text btn-back">ATRÁS</button></li>
+        </ul>
+      </nav>
+    </section>
+
+    <!-- PANTALLA DE CARGA -->
+    <section class="screen" id="loading-screen">
+      <h2 class="white-text">LOADING</h2>
+    </section>
+
+    <!-- HUD DURANTE EL JUEGO EN CURSO -->
+    <section class="hud hud-screen">
+      <div class="hud-item white-text">PUNTOS: <span id="score">0</span></div>
+      <button id="btn-pause">PAUSA</button>
+    </section>
+
+    <!-- PANTALLA DE PAUSA-->
+    <section class="screen pause-screen">
+      <h2>PAUSA</h2>
+      <button id="btn-resume">CONTINUAR</button>
+    </section>
+
+    <!-- AQUÍ HABRÁ MÁS ELEMENTOS DE UI -->
+  </header>
+
+  <!-- ÁREA DE GAMEPLAY -->
+  <main class="gameplay-area">
+    <div id="game-board"></div>
+  </main>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+
+</html>
